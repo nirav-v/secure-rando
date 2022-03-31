@@ -1,8 +1,19 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+var alphabetLower = "abcdefghijklmnopqrstuvwxyz"
+var alphabetUpper = alphabetLower.toUpperCase()
+var specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var numbers = "1234567890"
+
+// candidates will be a list of all the possible data types that the user chooses (lowercase, uppercase, numbers etc.)
+var candidates = " "
+// char will be the randomly generated character in the final candidates string
+var char = " "
+
+
 function generatePassword() {
-  var password = "password";
+  var password = "password: ";
   // TODO: add code to generate the password here
 // prompt the user to choose the number of charcters in their password
 var characterLength = Number(prompt("how many charcters would you like in your password?"));
@@ -18,50 +29,51 @@ if (characterLength >= 8 && characterLength <= 128){
   Number(prompt("choose the password's character length"));
 }
 
-// make and empty string of random characters 
-// var randomCharacters = " ";
-// for every character category the user selects, that category will be added on to the random charcters string 
-//  // Got this code from: geeksforgeeks, loop through each charcter in the password's length, at each position of the password, randomly select an index in the random characters string and add that charcter to the password.
-//   for (var i = 0; i <= password.length; i++) {
-//   var char = Math.floor(Math.random()
-//         * randomCharacters.length);
-                  
-//     password += randomCharacters.charAt(char);     
-//      }
-// console.log(randomCharacters)
-// console.log(password.length)
-
 // confirm if they would like to have lowercase characters
-var lowercaseLetters = confirm("Would you like to inclue lowercase letters?")
-console.log(lowercaseLetters);
+var includeLowercase = confirm("Would you like to inclue lowercase letters?")
+console.log(includeLowercase);
 // if true, randomly select at least 1 lower case letter to be in the password
-if (lowercaseLetters) {
-var alphabetLower = "abcdefghijklmnopqrstuvwxyz"
+if (includeLowercase) {
+candidates += alphabetLower
 var randomLowercase = alphabetLower[Math.floor(Math.random() * alphabetLower.length)]
 console.log(randomLowercase)
-// randomCharacters += randomLowercase
+char += randomLowercase
+password += char
 }
 
 // confirm if they would like to have uppercase charcters
-var uppercaseLetters = confirm("Would you like to inclue uppercase letters?")
-console.log(uppercaseLetters);
+var includeUppercase = confirm("Would you like to inclue uppercase letters?")
+console.log(includeUppercase);
 // if true, include at least 1 random uppercase letter in password
-if (uppercaseLetters) {
-  var alphabetUpper = alphabetLower.toUpperCase()
-
+if (includeUppercase) {
   var randomUppercase = alphabetUpper[Math.floor(Math.random() * alphabetUpper.length)]
   console.log(randomUppercase)
 }
 
 
 // confirm if they would like to include special characters
-var specialCharacters = confirm("Would you like to include special characters?")
-console.log(specialCharacters)
+var includeSpecialCharacters = confirm("Would you like to include special characters?")
 // if true, randomly select at least 1 special charcter to be in the password
+if (includeSpecialCharacters) {
+  var randomSpecialCharacter = specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
+  console.log(randomSpecialCharacter)
+}
 
 // confirm if they would like to include numbers
 var includeNumbers = confirm("Would you like to include numbers?")
 // if true, randomly select at least 1 number to be in the password
+if (includeNumbers) {
+var randomNumber = numbers[Math.floor(Math.random() * numbers.length)]
+console.log(randomNumber)
+char += randomNumber
+password += char
+}
+
+// use the charcterLength to randomly select the correct number of characters
+while(password.length < characterLength){
+  char = candidates[Math.floor(Math.random() * candidates.length)]
+  password += char
+}
 
 //  Make sure the new password with it set length and random character preferences is rendered on the page
 
