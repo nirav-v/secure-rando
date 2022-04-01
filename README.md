@@ -1,9 +1,10 @@
 # secure-rando
 
 ## This is a random password generator page made with HTML, CSS, and javaScript 
+
 ## just click the generate password button, eneter the desired character count, and use the confirm windows choose which character types you would like to inlcude.
 
-##the final password is rendered on the text box in the DOM
+#the final password is rendered on the text box in the DOM
 
 ## Link to deployed page: https://nirav-v.github.io/secure-rando/
 
