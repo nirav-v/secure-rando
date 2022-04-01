@@ -38,7 +38,9 @@ var includeLowercase = confirm("Would you like to inclue lowercase letters?")
 // if true, randomly select at least 1 lower case letter to be in the password
 if (includeLowercase) {
   var randomLowercase = alphabetLower[Math.floor(Math.random() * alphabetLower.length)]
+  // add the chosen character type string to the candidates list
   candidates += alphabetLower
+  // ensure that the password includes at least one random character from each type selected by the user
   char = randomLowercase
   password += char 
 }
@@ -82,7 +84,8 @@ while(password.length < characterLength){
 }
 
 if (candidates.length === 0){
-  alert("please include at least one character type to generate your password");
+  alert("please include at least one character type to generate your password")
+  password = "please generate a password with at least one character type";
 };
 
 //  Make sure the new password  is rendered on the page
